@@ -26,6 +26,7 @@ import kotlin.math.min
 
 class ClassificationResultsAdapter :
     RecyclerView.Adapter<ClassificationResultsAdapter.ViewHolder>() {
+
     companion object {
         private const val NO_VALUE = "--"
     }
@@ -72,9 +73,21 @@ class ClassificationResultsAdapter :
 
         fun bind(label: String?, score: Float?) {
             with(binding) {
-                tvLabel.text = label ?: NO_VALUE
+                val mappedLabel = mapLabel(label)
+                tvLabel.text = mappedLabel ?: NO_VALUE
                 tvScore.text = if (score != null) String.format("%.2f", score) else NO_VALUE
             }
+        }
+    }
+
+    private fun mapLabel(label: String?): String? {
+        return when (label) {
+            "4" -> "Gel de baño"
+            "3" -> "Gaseosa"
+            "2" -> "Detergente"
+            "1" -> "Desodorante"
+            "0" -> "Cafe"
+            else -> null // Default value if it doesn't match any of the above cases
         }
     }
 }
