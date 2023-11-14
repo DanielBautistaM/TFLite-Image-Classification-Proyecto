@@ -82,7 +82,7 @@ class ClassificationResultsAdapter :
 
     private fun mapLabel(label: String?): String? {
         return when (label) {
-            "4" -> "Gel de baño"
+            "4" -> "Jabon de manos"
             "3" -> "Gaseosa"
             "2" -> "Detergente"
             "1" -> "Desodorante"
